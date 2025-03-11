@@ -1,0 +1,61 @@
+package model;
+
+public class Stanza
+{
+	private int id;
+	private int lato1,lato2;
+	private String tipo;
+
+	//RIFERIMENTO AL PADRE
+	private Casa casa;
+
+	public int getId()
+	{
+		return id;
+	}
+
+	public void setId(int id)
+	{
+		this.id = id;
+	}
+
+	public int getLato1()
+	{
+		return lato1;
+	}
+
+	public void setLato1(int lato1)
+	{
+		this.lato1 = lato1;
+	}
+
+	public int getLato2()
+	{
+		return lato2;
+	}
+
+	public void setLato2(int lato2)
+	{
+		this.lato2 = lato2;
+	}
+
+	public String getTipo()
+	{
+		return tipo;
+	}
+
+	public void setTipo(String tipo)
+	{
+		this.tipo = tipo;
+	}
+
+	public Casa getCasa()
+	{
+		return casa;
+	}
+
+	public void setCasa(Casa casa)
+	{
+		this.casa = casa;
+	}
+}
