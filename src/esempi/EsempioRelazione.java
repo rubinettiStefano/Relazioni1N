@@ -1,7 +1,7 @@
 package esempi;
 
-import model.Casa;
-import model.Stanza;
+import model.entities.Casa;
+import model.entities.Stanza;
 
 public class EsempioRelazione
 {
