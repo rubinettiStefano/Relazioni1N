@@ -44,11 +44,6 @@ public class EsempioRelazione
 
 
 		System.out.println("Quale è la tua area?");
-		int area = 0;
-
-		for(Stanza s:c.getStanze())
-			area+=s.getLato1()* s.getLato2();
-
-		System.out.println(area);
+		System.out.println(c.numeroBagni());
 	}
 }

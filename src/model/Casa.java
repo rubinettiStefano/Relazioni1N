@@ -13,8 +13,6 @@ public class Casa
 	//LISTA DI FIGLI
 	private ArrayList<Stanza> stanze = new ArrayList<>();
 
-
-
 	public void link(Stanza s)
 	{
 		stanze.add(s);
@@ -79,5 +77,24 @@ public class Casa
 	public void setStanze(ArrayList<Stanza> stanze)
 	{
 		this.stanze = stanze;
+	}
+
+	public int calcArea()
+	{
+		int res =0;
+		for(Stanza s:stanze)
+			res+=s.getLato1()*s.getLato2();
+
+		return res;
+	}
+
+	public int numeroBagni()
+	{
+		int res=0;
+		for(Stanza s:stanze)
+			if(s.getTipo().equals("bagno"))
+				res++;
+
+		return res;
 	}
 }
