@@ -83,8 +83,9 @@ public class Casa
 	{
 		int res =0;
 		for(Stanza s:stanze)
-			res+=s.getLato1()*s.getLato2();
-
+		{
+			res +=  s.calcolaArea();
+		}
 		return res;
 	}
 

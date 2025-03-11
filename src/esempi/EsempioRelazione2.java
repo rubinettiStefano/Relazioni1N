@@ -63,6 +63,8 @@ public class EsempioRelazione2
 		stanza21.setTipo("camera");
 		casa2.link(stanza21);
 
+		System.out.println("Area21: "+stanza21.calcolaArea());
+
 		Stanza stanza22 = new Stanza();
 		stanza22.setId(202);
 		stanza22.setLato1(3);
@@ -129,7 +131,12 @@ public class EsempioRelazione2
 		{
 			System.out.println("------------------------------------------------");
 			System.out.println("Indirizzo:"+c.getIndirizzo());
+
+
+
+
 			System.out.println("Area:"+c.calcArea());
+
 			System.out.println("Bagni:"+c.numeroBagni());
 			System.out.println("Numero stanze:"+c.getStanze().size());
 

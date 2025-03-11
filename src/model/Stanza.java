@@ -58,4 +58,10 @@ public class Stanza
 	{
 		this.casa = casa;
 	}
+
+	public int calcolaArea()
+	{
+		return lato1*lato2;
+	}
+
 }
