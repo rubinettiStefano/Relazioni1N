@@ -2,19 +2,19 @@ package model.entities;
 
 public class Stanza
 {
-	private int id;
+	private Long id;
 	private int lato1,lato2;
 	private String tipo;
 
 	//RIFERIMENTO AL PADRE
 	private Casa casa;
 
-	public int getId()
+	public Long getId()
 	{
 		return id;
 	}
 
-	public void setId(int id)
+	public void setId(Long id)
 	{
 		this.id = id;
 	}

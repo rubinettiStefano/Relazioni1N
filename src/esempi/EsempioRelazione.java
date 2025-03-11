@@ -9,20 +9,20 @@ public class EsempioRelazione
 	public static void main(String[] args)
 	{
 		Casa c = new Casa();
-		c.setId(1);
+		c.setId(1L);
 		c.setIndirizzo("VIA viaroma 10, Roma");
 		c.setClasseEnergetica("AA--");
 		c.setPiano(3);
 		c.setPmq(1000);
 
 		Stanza s1 = new Stanza();
-		s1.setId(1);
+		s1.setId(1L);
 		s1.setTipo("camera");
 		s1.setLato1(3);
 		s1.setLato2(4);
 
 		Stanza s2 = new Stanza();
-		s2.setId(2);
+		s2.setId(2L);
 		s2.setTipo("cucina");
 		s2.setLato1(5);
 		s2.setLato2(5);
