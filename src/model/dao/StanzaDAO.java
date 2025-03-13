@@ -15,7 +15,6 @@ public class StanzaDAO
 	//metodo DI CLASSE, static, un convertitore da RIGA a OGGETTO
 	public static Stanza convertiRigaInStanza(ResultSet riga) throws Exception
 	{
-
 		Stanza res = new Stanza();
 		res.setId(riga.getLong("id"));
 		res.setTipo(riga.getString("tipo"));

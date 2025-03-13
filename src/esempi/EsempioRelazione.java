@@ -2,12 +2,12 @@ package esempi;
 
 import model.entities.Casa;
 import model.entities.Stanza;
-
 public class EsempioRelazione
 {
 
 	public static void main(String[] args)
 	{
+
 		Casa c = new Casa();
 		c.setId(1L);
 		c.setIndirizzo("VIA viaroma 10, Roma");
