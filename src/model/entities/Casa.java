@@ -1,6 +1,7 @@
 package model.entities;
 
 import java.util.ArrayList;
+import java.util.StringJoiner;
 
 public class Casa
 {
@@ -97,5 +98,17 @@ public class Casa
 				res++;
 
 		return res;
+	}
+
+	@Override
+	public String toString()
+	{
+		return new StringJoiner(", ", Casa.class.getSimpleName() + "[", "]")
+				.add("id=" + id)
+				.add("indirizzo='" + indirizzo + "'")
+				.add("pmq=" + pmq)
+				.add("classeEnergetica='" + classeEnergetica + "'")
+				.add("piano=" + piano)
+				.toString();
 	}
 }

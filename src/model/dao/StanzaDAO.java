@@ -30,7 +30,7 @@ public class StanzaDAO
 		this.con = con;
 	}
 	//lettura per id
-	public Stanza findById(int id) throws Exception
+	public Stanza findById(Long id) throws Exception
 	{
 		Statement s = con.createStatement();
 		ResultSet rs = s.executeQuery("SELECT * FROM stanza WHERE id="+id);
@@ -79,14 +79,13 @@ public class StanzaDAO
 		else
 		{
 			//siamo in UPDATE, vogliamo modificare riga già esistente
-			String query="UPDATE stanza	SET lato1='[lato1]',lato2='[lato2]',tipo='[tipo]',id_casa='[id_casa]'" +
+			String query="UPDATE stanza	SET lato1='[lato1]',lato2='[lato2]',tipo='[tipo]'" +
 					" WHERE id='[id]'";
 
 			query=  query.replace("[id]",s.getId()+"")
 					.replace("[lato1]",s.getLato1()+"")
 					.replace("[lato2]",s.getLato2()+"")
-					.replace("[tipo]",s.getTipo())
-					.replace("[id_casa]",s.getCasa().getId()+"");
+					.replace("[tipo]",s.getTipo());
 			st.execute(query);
 		}
 	}

@@ -16,7 +16,7 @@ public class EsempioUsoDAO
 		Scanner sc = new Scanner(System.in);
 		Connection con = ConnectionFactory.createConnection("agenzia_immobiliare");
 		CasaDAO cdao = new CasaDAO(con);
-		Casa casaTorino = cdao.findById(1);
+		Casa casaTorino = cdao.findById(1L);
 
 //		System.out.println("Indirizzo: "+casaTorino.getIndirizzo());
 //

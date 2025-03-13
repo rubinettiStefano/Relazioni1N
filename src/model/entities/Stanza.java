@@ -1,5 +1,7 @@
 package model.entities;
 
+import java.util.StringJoiner;
+
 public class Stanza
 {
 	private Long id;
@@ -64,4 +66,14 @@ public class Stanza
 		return lato1*lato2;
 	}
 
+	@Override
+	public String toString()
+	{
+		return new StringJoiner(", ", Stanza.class.getSimpleName() + "[", "]")
+				.add("id=" + id)
+				.add("lato1=" + lato1)
+				.add("lato2=" + lato2)
+				.add("tipo='" + tipo + "'")
+				.toString();
+	}
 }

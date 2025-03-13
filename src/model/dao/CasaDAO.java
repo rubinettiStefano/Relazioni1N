@@ -30,7 +30,7 @@ public class CasaDAO
 		this.con = con;
 	}
 	//lettura per id
-	public Casa findById(int id) throws Exception
+	public Casa findById(Long id) throws Exception
 	{
 		Statement s = con.createStatement();
 		ResultSet rs = s.executeQuery("SELECT * FROM casa WHERE id="+id);
