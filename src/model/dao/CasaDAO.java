@@ -29,39 +29,57 @@ public class CasaDAO
 	{
 		this.con = con;
 	}
-	//lettura per id
-	public Casa findById(Long id) throws Exception
-	{
-		Statement s = con.createStatement();
-		ResultSet rs = s.executeQuery("SELECT * FROM casa WHERE id="+id);
 
-		if(rs.next())
+	//lettura per id
+	public Casa findById(Long id)
+	{
+		try
 		{
-			Casa c = convertiRigaInCasa(rs);
-			collegaStanze(c);//vengono collegate tutte le stanze figlie
-			return c;
+			Statement s = con.createStatement();
+			//LA QUERY QUI NON PUÒ FALLIRE IN BASE AL VALORE DI ID
+			//SE FALLISCE È PERCHÈ DB HA PROBLEMI
+			ResultSet rs = s.executeQuery("SELECT * FROM casa WHERE id=" + id);
+
+			if (rs.next())
+			{
+				Casa c = convertiRigaInCasa(rs);
+				collegaStanze(c);//vengono collegate tutte le stanze figlie
+				return c;
+			}
+			return null;
+		} catch (Exception e)//ECCEZIONE FATALE, DERIVA DAL DB, TERMINO
+		{
+			System.out.println("DB PROBLEMI IRRISOLVIBILI,CONTROLLA");
+			System.exit(-1);//TERMINA IL PROGRAMMA
+			return null;//inutile, ma intellij se no si lamente
 		}
 
-
-		return null;
 	}
 
 	//lettura totale
-	public ArrayList<Casa> findAll() throws Exception
+	public ArrayList<Casa> findAll()
 	{
-		Statement s = con.createStatement();
-		ResultSet rs = s.executeQuery("SELECT * FROM Casa");
-
-		ArrayList<Casa> result = new ArrayList<>();
-
-		while (rs.next())
+		try
 		{
-			Casa c = convertiRigaInCasa(rs);
-			collegaStanze(c);
-			result.add(c);
-		}
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery("SELECT * FROM Casa");
 
-		return result;
+			ArrayList<Casa> result = new ArrayList<>();
+
+			while (rs.next())
+			{
+				Casa c = convertiRigaInCasa(rs);
+				collegaStanze(c);
+				result.add(c);
+			}
+
+			return result;
+		} catch (Exception e)
+		{
+			System.out.println("DB PROBLEMI IRRISOLVIBILI,CONTROLLA");
+			System.exit(-1);//TERMINA IL PROGRAMMA
+			return null;//inutile, ma intellij se no si lamente
+		}
 	}
 
 	//creazione
@@ -72,30 +90,31 @@ public class CasaDAO
 	{
 		Statement st = con.createStatement();
 
-		if(s.getId()==null)
+		//IL METODO LANCIA ECCEZIONI SE LE QUERY SONO MALFORMATE
+		if (s.getId() == null)
 		{
 			//in INSERT, vogliamo creare nuova riga
-			String query="INSERT INTO Casa(indirizzo,pmq,classe_energetica,piano) VALUES " +
+			String query = "INSERT INTO Casa(indirizzo,pmq,classe_energetica,piano) VALUES " +
 					"('[indirizzo]','[pmq]','[classe_energetica]','[piano]')";
 
-			query=	query.replace("[indirizzo]",s.getIndirizzo()+"")
-					.replace("[pmq]",s.getPmq()+"")
-					.replace("[classe_energetica]",s.getClasseEnergetica())
-					.replace("[piano]",s.getPiano()+"");
+			query = query.replace("[indirizzo]", s.getIndirizzo() + "")
+					.replace("[pmq]", s.getPmq() + "")
+					.replace("[classe_energetica]", s.getClasseEnergetica())
+					.replace("[piano]", s.getPiano() + "");
 			st.execute(query);
 
 		}
 		else
 		{
 			//siamo in UPDATE, vogliamo modificare riga già esistente
-			String query="UPDATE Casa	SET indirizzo='[indirizzo]',pmq='[pmq]',classe_energetica='[classe_energetica]',piano='[piano]'" +
+			String query = "UPDATE Casa	SET indirizzo='[indirizzo]',pmq='[pmq]',classe_energetica='[classe_energetica]',piano='[piano]'" +
 					" WHERE id='[id]'";
 
-			query=  query.replace("[id]",s.getId()+"")
-					.replace("[indirizzo]",s.getIndirizzo()+"")
-					.replace("[pmq]",s.getPmq()+"")
-					.replace("[classe_energetica]",s.getClasseEnergetica())
-					.replace("[piano]",s.getPiano()+"");
+			query = query.replace("[id]", s.getId() + "")
+					.replace("[indirizzo]", s.getIndirizzo() + "")
+					.replace("[pmq]", s.getPmq() + "")
+					.replace("[classe_energetica]", s.getClasseEnergetica())
+					.replace("[piano]", s.getPiano() + "");
 			st.execute(query);
 		}
 	}
@@ -103,13 +122,16 @@ public class CasaDAO
 	//cancellazione
 	public void delete(Long id) throws Exception
 	{
+
+		if(findById(id)==null)
+			throw new RuntimeException("PAGLIACCIO, NON HAI MESSO ID di qualcosa nel db");
 		//POLITICA NIENTE ORFANI
 		//CASCADE DELETE
 		Statement s1 = con.createStatement();
-		s1.execute("DELETE FROM stanza WHERE id_casa="+id);
+		s1.execute("DELETE FROM stanza WHERE id_casa=" + id);
 
 		Statement s2 = con.createStatement();
-		s2.execute("DELETE FROM casa WHERE id="+id);
+		s2.execute("DELETE FROM casa WHERE id=" + id);
 
 	}
 
@@ -117,8 +139,8 @@ public class CasaDAO
 	{
 		Statement st = con.createStatement();
 		//leggo le stanze FIGLIE
-		ResultSet rs = st.executeQuery("SELECT * FROM stanza WHERE id_casa="+c.getId());
-		while(rs.next())
+		ResultSet rs = st.executeQuery("SELECT * FROM stanza WHERE id_casa=" + c.getId());
+		while (rs.next())
 		{
 			Stanza trasformata = StanzaDAO.convertiRigaInStanza(rs);
 			c.link(trasformata);

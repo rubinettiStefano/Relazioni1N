@@ -30,15 +30,23 @@ public class StanzaDAO
 		this.con = con;
 	}
 	//lettura per id
-	public Stanza findById(Long id) throws Exception
+	public Stanza findById(Long id)
 	{
-		Statement s = con.createStatement();
-		ResultSet rs = s.executeQuery("SELECT * FROM stanza WHERE id="+id);
+		try
+		{
+			Statement s = con.createStatement();
+			ResultSet rs = s.executeQuery("SELECT * FROM stanza WHERE id="+id);
 
-		if(rs.next())
-			return convertiRigaInStanza(rs);
+			if(rs.next())
+				return convertiRigaInStanza(rs);
 
-		return null;
+			return null;
+		}catch (Exception e)//ECCEZIONE FATALE, DERIVA DAL DB, TERMINO
+		{
+			System.out.println("DB PROBLEMI IRRISOLVIBILI,CONTROLLA");
+			System.exit(-1);//TERMINA IL PROGRAMMA
+			return null;//inutile, ma intellij se no si lamente
+		}
 	}
 
 	//lettura totale
@@ -94,6 +102,8 @@ public class StanzaDAO
 	public void delete(Long id) throws Exception
 	{
 		Statement s = con.createStatement();
+		if(findById(id)==null)
+			throw new RuntimeException("PAGLIACCIO, NON HAI MESSO ID di qualcosa nel db");
 		s.execute("DELETE FROM stanza WHERE id="+id);
 	}
 }
