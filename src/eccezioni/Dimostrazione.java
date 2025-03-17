@@ -1,6 +1,9 @@
 package eccezioni;
 
+import ereditarieta.Persona;
+
 import java.util.Scanner;
+
 
 public class Dimostrazione
 {
@@ -19,10 +22,12 @@ public class Dimostrazione
 		{
 			System.out.println(e.getMessage());
 		}
+
 	}
 
 	static void chiediInputEDaiEccezione() throws InputSbagliatoException,RuntimeException
 	{
+
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("SE metti pippo do runtime,con paperino InputSbagliato");

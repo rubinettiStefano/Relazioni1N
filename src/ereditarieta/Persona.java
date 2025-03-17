@@ -8,7 +8,14 @@ package ereditarieta;
  */
 public class Persona
 {
-	private String nome,cognome;
+
+	//In java abbiamo 4 tipi di visibilità:
+	//PUBLIC -> OVUNQUE
+	//PROTECTED -> package+chi mi estende,ovunque esso sia
+	//DEFAULT ->  package
+	//PRIVATE -> solo nella classe stessa
+	//la parolina in se viene detta "MODIFICATORE DI VISIBILITÀ"
+	protected String nome,cognome;
 
 	public Persona(){}
 

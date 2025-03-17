@@ -23,7 +23,7 @@ public class Docente extends Persona
 	 */
 	public String spiega()
 	{
-		return "Sono "+getNome()+" "+getCognome()+" e oggi faremo "+materia+" blablablabla";
+		return "Sono "+nome+" "+getCognome()+" e oggi faremo "+materia+" blablablabla";
 	}
 
 	public String getMateria()
