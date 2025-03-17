@@ -10,6 +10,11 @@ public class Dimostrazione
 		{
 			chiediInputEDaiEccezione();
 		}
+		catch (InputSbagliatoException e)
+		{
+			e.insultaUtente();
+			System.out.println(e.produciMessaggioBello());
+		}
 		catch (RuntimeException e)
 		{
 			System.out.println(e.getMessage());
