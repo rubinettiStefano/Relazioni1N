@@ -28,3 +28,5 @@ public class InputSbagliatoException extends RuntimeException
 		return "Errore derivato da "+tipologiaInput+"| messaggio: "+getMessage();
 	}
 }
+
+
