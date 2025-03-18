@@ -37,4 +37,12 @@ public class Docente extends Persona
 	{
 		this.materia = materia;
 	}
+
+	//STO SOVRASCRIVENDO IL METODO miPresento ottenuto da Persona
+	@Override
+	public String toString()
+	{
+		return "Ciao sono un Docente di nome "+nome+ " e cognome "+cognome+" e insegno "+materia;
+	}
+
 }

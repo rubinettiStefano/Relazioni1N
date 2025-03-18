@@ -26,4 +26,9 @@ public class Studente extends Persona
 	{
 		this.media = media;
 	}
+
+	public String miPresento()
+	{
+		return "Ciao sono uno Studente di nome "+nome+ " e cognome "+cognome+" e ho media "+media;
+	}
 }

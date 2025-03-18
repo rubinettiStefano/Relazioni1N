@@ -44,4 +44,10 @@ public class Persona
 	{
 		this.cognome = cognome;
 	}
+
+	@Override
+	public String toString()
+	{
+		return "Ciao sono una persona di nome "+nome+ " e cognome "+cognome;
+	}
 }
