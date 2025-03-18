@@ -11,6 +11,8 @@ public class Docente extends Persona
 
 	private String materia;
 
+	public Docente(){}
+
 	public Docente(String nome,String cognome,String materia)
 	{
 		super(nome,cognome);// new Persona(nome,cognome);
