@@ -39,6 +39,8 @@ public class Docente extends Persona
 	}
 
 	//STO SOVRASCRIVENDO IL METODO miPresento ottenuto da Persona
+	//facendolo vado a cambiare la versione del metodo utilizzata OVUNQUE quando andiamo
+	//a richiamarlo su un oggetto di Tipo Concreto DOCENTE, indipendentemente dal suo tipo formale
 	@Override
 	public String toString()
 	{
