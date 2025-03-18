@@ -48,6 +48,6 @@ public class Persona
 	@Override
 	public String toString()
 	{
-		return "Ciao sono una persona di nome "+nome+ " e cognome "+cognome;
+		return "Ciao mi chiamo "+nome+ " "+cognome;
 	}
 }

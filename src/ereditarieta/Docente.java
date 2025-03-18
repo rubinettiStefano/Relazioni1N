@@ -44,7 +44,9 @@ public class Docente extends Persona
 	@Override
 	public String toString()
 	{
-		return "Ciao sono un Docente di nome "+nome+ " e cognome "+cognome+" e insegno "+materia;
+		//con super.metodo() posso richiamare la versione del metodo
+		//scritta all'interno del supertipo, all'interno di Persona
+		return super.toString()+" e insegno "+materia;
 	}
 
 }
